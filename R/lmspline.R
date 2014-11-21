@@ -21,8 +21,18 @@
 #' @author Creagh Briercliffe
 #' @export
 #' @examples
+#' # Example 1
+#' x <- rnorm(100, 0, 1)
+#' y <- 3 + pmin(2* x, 0) + rnorm(1, 0, 1)
 #' lmspline(x, y)
-#' lmspline(nknots = 3, x, y, na.rm = FALSE)
+#' 
+#' # Example 2
+#' lmspline(x, y, nknots = 3, na.rm = FALSE)
+#' 
+#' # Example 3
+#' gd_url <- "http://tiny.cc/gapminder"
+#' gDat <- read.delim(file = gd_url)
+#' lmspline(gDat$gdpPercap, gDat$lifeExp, 2, na.rm = TRUE)
 
 lmspline <- function(x, y, nknots = 1, na.rm = FALSE) {
 	
