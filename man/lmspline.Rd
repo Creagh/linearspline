@@ -3,14 +3,14 @@
 \alias{lmspline}
 \title{Linear spline regression}
 \usage{
-lmspline(x, y, num_knots = 1, na.rm = FALSE)
+lmspline(x, y, nknots = 1, na.rm = FALSE)
 }
 \arguments{
 \item{Vector}{\code{x} of the numeric valued data}
 
 \item{Vector}{\code{y} of the responses}
 
-\item{Numeric}{\code{num_knots} a positive integer corresponding
+\item{Numeric}{\code{nknots} a positive integer corresponding
 to the number of knots}
 
 \item{Logical}{\code{na.rm} takes value \code{TRUE} if \code{NA}
@@ -21,7 +21,9 @@ List containing the fitted model and the vector of knots used.
 }
 \description{
 This function returns a list of coefficients and knots used
-to fit a linear spline to the given data.
+to fit a linear spline to the given data. Given a number of knots,
+ \code{nknots}, this function will place \code{nknots} knots at
+ evenly spaced quantiles of the data, and fit a linear regression spline.
 }
 \details{
 Linear spline regression works by fitting piece-wise linear
@@ -31,7 +33,7 @@ it can produce a better local fit of the data between the knots.
 }
 \examples{
 lmspline(x, y)
-lmspline(num_knots = 3, x, y, na.rm = FALSE)
+lmspline(nknots = 3, x, y, na.rm = FALSE)
 }
 \author{
 Creagh Briercliffe
