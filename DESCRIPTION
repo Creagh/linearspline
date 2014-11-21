@@ -1,4 +1,4 @@
-Package: lmspline
+Package: linearspline
 Title: Fit a linear spline for piecewise regression.
 Version: 0.0.0.9000
 Authors@R: as.person("Creagh Briercliffe <creagh@stat.ubc.ca> [aut, cre]")
