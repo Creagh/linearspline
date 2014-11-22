@@ -5,7 +5,9 @@ Authors@R: as.person("Creagh Briercliffe <creagh@stat.ubc.ca> [aut, cre]")
 Description: Given a number of knots, n, this function will place n knots
     at evenly spaced quantiles of the data, and fit a linear regression spline.
     Returned is a list with the fitted coefficients and knots used.
-Depends:
+Depends: 
     R (>= 3.1.1)
 License: CCO
 LazyData: true
+Suggests: knitr
+VignetteBuilder: knitr

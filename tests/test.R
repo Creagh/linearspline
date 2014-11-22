@@ -23,3 +23,8 @@ pred.spline(x, lspline)
 df <- data.frame(x,y)
 ggplot(df, aes(x, y)) + geom_point() +
 	stat_function(fun = pred.spline, args = list(lspline), colour = 'blue', size = 0.7)
+
+data(Boston, package='MASS')
+bstn_spline <- lmspline(Boston$ptratio, Boston$tax, nknots = 4)
+ggplot(Boston, aes(x = ptratio, y = tax)) + geom_point() +
+	stat_function(fun = pred.spline, args = list(bstn_spline), colour = 'blue', size = 0.7)
