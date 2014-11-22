@@ -1,13 +1,15 @@
 Package: linearspline
 Title: Fit a linear spline for piecewise regression.
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: as.person("Creagh Briercliffe <creagh@stat.ubc.ca> [aut, cre]")
 Description: Given a number of knots, n, this function will place n knots
     at evenly spaced quantiles of the data, and fit a linear regression spline.
     Returned is a list with the fitted coefficients and knots used.
-Depends: 
+Depends:
     R (>= 3.1.1)
 License: CCO
 LazyData: true
-Suggests: knitr
+Suggests:
+    knitr,
+    testthat
 VignetteBuilder: knitr
