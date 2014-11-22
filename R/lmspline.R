@@ -46,7 +46,7 @@ lmspline <- function(x, y, nknots = 1, na.rm = FALSE) {
 	}
 	
 	# Default: Choose the knots as evenly spaced quantiles of the data
-	knots <- x %>% quantile((1:nknots) / (nknots + 1), na.rm = na.rm)
+	knots <- quantile(x, (1:nknots) / (nknots + 1), na.rm = na.rm)
 	
 	# Create the matrix of covariates to pass to the lm function
 	m <- create.cov(x, knots)
@@ -56,32 +56,4 @@ lmspline <- function(x, y, nknots = 1, na.rm = FALSE) {
 	
 	# Return the fitted function and the knots in a list
 	return(list(fit = fit, knots = knots))
-}
-
-# The create.cov subroutine creates a covariance matrix to be used in the linear regression
-create.cov <- function(x, knots) {
-	nknots <- length(knots)
-	
-	# Begin by initializing a matrix of zeroes with the apporpriate dimensions
-	m <- matrix(0, nrow = length(x), ncol = nknots + 1)
-	
-	# Fill the covariate matrix with the appropriate values based on the spline function
-	m[,1] <- x
-	for(i in 1:nknots) {
-		m[, i+1] <- pmax(0, x - knots[i])
-	}
-	return(m)
-}
-
-# The pred.spline function predicts values under the linear spline model
-pred.spline <- function(x, lspline) {
-	nknots  <- length(lspline$knots)
-	fit <- lspline$fit
-	knots <- lspline$knots
-	
-	y = coef(fit)[1] + coef(fit)[2] * x
-	for(i in 1:nknots) {
-		y = y + coef(fit)[i+2] * pmax(0, x - knots[i])
-	}
-	return(y)
 }
